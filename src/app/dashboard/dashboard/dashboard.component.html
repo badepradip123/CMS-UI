@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="page-header">Add Contact</h2>
+  <form (submit) = "addContact()" >
+    <div *ngIf="!show">
+    <div class = "form-group">
+      <label>Full Name:</label>
+      <input type = "text"  [(ngModel)]="name" name="name" class="form-control" required/>
+    </div>
+    <div class = "form-group">
+        <label>Phone:</label>
+        <input type = "text" [(ngModel)]="phone" name="phone" class="form-control" required>
+    </div>
+    </div>    
+    <input type="submit" class="btn btn btn-success" (click)="show=!show" value="add">  
+  </form>
+</div>
+<hr>
+<div class = "container">
+  
+    <div *ngFor="let contact of contacts">
+      <div class="row">
+        <div class = "col-md-3">
+              {{contact.name}}
+        </div>
+        <div class = "col-md-3">
+              {{contact.phone}}
+        </div>        
+        <div class = "col-md-1">
+            <input type="button" (click)="deleteContact(contact._id)" value="Delete" class="btn btn-danger">
+            <br><br>
+        </div>
+        <div class = "col-md-1">
+          <input type="button"  value="Edit" class="btn">
+        </div>  
+          <!-- <app-update-contact *ngIf="show[i]" [Contact]="contact"></app-update-contact> -->
+          <br><br>      
+      </div>  
+    </div>     
+</div>
